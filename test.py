@@ -34,15 +34,15 @@ def test_points_example(url):
     requests.post(trans_url, json=add4)
     requests.post(trans_url, json=add5)
     all_added_transactions = requests.get(trans_url)
-    print(all_added_transactions.json())
+    print(f'Points added:\t{all_added_transactions.json()}')
 
     points_url = url + "/fetch/spend"
     points = { "points": 5000 }
     spent_points = requests.post(points_url, json=points)
-    print(spent_points.json())
+    print(f"Points spent:\t{spent_points.json()}")
 
     points_left = requests.get(trans_url)
-    print(points_left.json())
+    print(f"Points left:\t{points_left.json()}")
 
 if __name__ == "__main__":
     url = get_url(sys.argv[1:])

@@ -1,4 +1,6 @@
 # Fetch Rewards Coding Exercise 
+Exercise at: https://fetch-hiring.s3.us-east-1.amazonaws.com/points.pdf  
+
 Simple Flask app that adds, spends, and checks transaction points through HTTP requests. In this repo is a simple client script, **but this web server can handle normal JSON HTTP requests to http://csstransky.com:4000 (or locally at http://127.0.0.1:400) with any client**.  
 Full details of the exercise will be listed below.
 

@@ -92,11 +92,12 @@ class Database:
         spent_transactions.append(last_spent_transaction)
 
         # Mutating the original transactions to remove points spent
-        if spend_points - self.transactions[index][1] == 0:
-            # Since there will be no "partial" points left, we can cleanly break the first element
-            self.transactions = self.transactions[index + 1:]
-        else:
+        if spend_points - self.transactions[index][1] < 0:
             self.transactions = self.transactions[index:]
             self.transactions[0][1] = trans_points - spend_points
+
+        else:
+            # Since there will be no "partial" points left, we can cleanly break the first element
+            self.transactions = self.transactions[index + 1:]
             
         return self.transaction_list_to_dict(spent_transactions, True)

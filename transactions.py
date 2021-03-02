@@ -69,6 +69,9 @@ class Database:
         NOTE: If more points are spent than there are available, all transaction points are spent,
         and an entry of MORE_POINTS_NEEDED is added to the final dict to show points not available
         """
+        if spend_points < 0:
+            print(f"\nERROR: Tried to spend points negative points!!!")
+            return {"ERROR": "CANNOT SPEND NEGATIVE POINTS! ADD THEM INSTEAD!"}
         if not self.transactions:
             print(f"\nERROR: Tried to spend points without any transactions!!!")
             return {"ERROR": "NO POINTS TO SPEND!"}

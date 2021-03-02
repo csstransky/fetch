@@ -45,9 +45,16 @@ class Database:
             timestamp - datetime object when points were added
         NOTE: Mutates self.transactions
         """
-        self.transactions.append([payer, points, timestamp])
-        # sort transactions based on the timestamps
-        self.transactions.sort(key = lambda x: x[2])  
+        lo = 0
+        hi = len(self.transactions)
+        while lo < hi:
+            mid = (lo + hi) // 2
+            if self.transactions[mid][2] < timestamp:
+                lo = mid + 1
+            else:
+                hi = mid
+        self.transactions.insert(lo, [payer, points, timestamp])
+        return
 
     def spend_points(self, spend_points):
         """

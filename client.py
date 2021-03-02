@@ -45,15 +45,15 @@ def get_args(argv):
     return url, points, payer, timestamp, is_spend, is_add, is_show
 
 def add_request(url, payer, points, timestamp):
-    if payer == "" or points <= 0:
-        print("\nERROR: Need proper \"--payer\" and above 0 \"--points\" arguments")
+    if payer == "" or points == 0:
+        print("\nERROR: Need proper \"--payer\" and non 0 \"--points\" arguments")
     else:
         args_dict = {"payer": payer, "points": points, "timestamp": timestamp}
         response = requests.post(url + TRANSACTION_ROUTE, json=args_dict)
         print(response)
 
 def spend_request(url, points):
-    if points <= 0:
+    if points < 0:
         print("\nERROR: Need \"--points\" argument above 0")
     else:
         args_dict = {"points": points}
